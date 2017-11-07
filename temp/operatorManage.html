@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title></title>
+	</head>
+
+	<body>
+		<div class="userWrap" ng-controller="operatorCtl">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>编辑</th>
+						<th>用户名</th>
+						<th>账号</th>
+						<th>权限</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in users">
+						<td>
+							<button class="btn" ng-click="editUser(user.id)">
+          						编辑
+       		 				</button>
+						</td>
+						<td>{{ user.userName }}</td>
+						<td>{{ user.code }}</td>
+						<td>{{ user.isadmin }}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<hr>
+			<button class="btn btn-success" ng-click="editUser('new')">
+				创建新用户
+			</button>
+			<hr>
+
+			<h3 ng-show="edit">创建新用户:</h3>
+			<h3 ng-hide="edit">编辑用户:</h3>
+
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">用户名:</label>
+					<div class="col-sm-10">
+						<input type="text" ng-model="userName" ng-disabled="!edit" placeholder="用户名">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">账号:</label>
+					<div class="col-sm-10">
+						<input type="text" ng-model="code" ng-disabled="!edit" placeholder="账号">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">权限:</label>
+					<div class="col-sm-10">
+						<input type="text" ng-model="isadmin" ng-disabled="!edit" placeholder="账号">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">密码:</label>
+					<div class="col-sm-10">
+						<input type="password" ng-model="passw1" placeholder="密码">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">重复密码:</label>
+					<div class="col-sm-10">
+						<input type="password" ng-model="passw2" placeholder="重复密码">
+					</div>
+				</div>
+			</form>
+
+			<hr>
+			<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="save()">
+				修改
+			</button>
+			<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="del()">
+				删除
+			</button>
+
+		</div>
+	</body>
+
+</html>

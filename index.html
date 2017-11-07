@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<style type="text/css">
+			body {
+				background-color: #1D2024;
+			}
+			
+			.wrap {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.wrap .cell {
+				width: 546px;
+				height: 370px;
+				background-color: #f7f7f7;
+				border: 10px solid #394556;
+				margin: 100px auto;
+			}
+			
+			.wrap .cell .box {
+				width: 440px;
+				height: 370px;
+				margin: auto;
+			}
+			
+			.wrap .cell .box .header {
+				width: 440px;
+				height: 98px;
+				border-bottom: 1px solid #e1e8ee;
+			}
+			
+			.wrap .cell .box .header img {
+				margin-top: 60px;
+				float: left;
+			}
+			
+			.wrap .cell .box .header p {
+				font-size: 27px;
+				color: #0085c6;
+				margin-top: 50px;
+				margin-left: 5px;
+				float: left;
+			}
+			
+			.wrap .cell .box .load {
+				width: 440px;
+				height: 270px;
+				border-bottom: 1px dotted #e1e8ee;
+				position: relative;
+			}
+			
+			.wrap .cell .box .load .user {
+				width: 440px;
+				height: 45px;
+				border: 1px solid lightgray;
+				margin-top: 30px;
+				font-size: 20px;
+				text-indent: 8px;
+			}
+			
+			.wrap .cell .box .load .password {
+				width: 440px;
+				height: 45px;
+				border: 1px solid lightgray;
+				margin-top: 15px;
+				font-size: 20px;
+				text-indent: 8px;
+			}
+			
+			.wrap .cell .box .load .use_img {
+				position: absolute;
+				top: 42px;
+				right: 5px;
+			}
+			
+			.wrap .cell .box .load .pass_img {
+				position: absolute;
+				top: 105px;
+				right: 5px;
+			}
+			
+			.wrap .cell .box .load .remand {
+				width: 20px;
+				zoom: 2;
+				margin-top: 20px;
+				float: left;
+			}
+			
+			.wrap .cell .box .load p {
+				font-size: 25px;
+				margin-top: 32px;
+				float: left;
+			}
+			
+			.wrap .cell .box .load .but {
+				width: 156px;
+				height: 55px;
+				background-color: #1b6aaa;
+				float: right;
+				margin-top: 35px;
+				font-size: 30px;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="cell">
+				<div class="box">
+					<div class="header">
+						<img src="img/loginHeader1.png" />
+						<p>请输入您的信息</p>
+					</div>
+					<div class="load">
+						<img src="img/code.png" alt="" class="use_img" />
+						<img src="img/password.png" alt="" class="pass_img" />
+						<input class="user" type="text" name="" id="" value="" placeholder="账号" />
+						<br/>
+						<input class="password" type="password" name="" id="" value="" placeholder="密码" />
+						<br/>
+						<input class="remand" type="checkbox" name="" value="" />
+						<p>记住</p>
+						<button class="but" type="button">
+							<img src="img/loginBtn.png"/>
+							登录
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/jQuery v1.12.4.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/hover.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		Hover($(".user"));
+		Hover($(".passWord"));
+		//记住密码
+		var checkBox = document.querySelector(".remand");
+		$(function() {
+			//如果记住密码复选框勾选，则获取数据并填写到输入框
+			if (localStorage.getItem("checkEl") == "true") {
+				document.querySelector(".user").value = localStorage.getItem("user");
+				document.querySelector(".password").value = localStorage.getItem("password");
+				document.querySelector(".remand").checked = localStorage.getItem("checkEl");
+			}
+		});
+		
+		$(".but").click(function() {
+			if($(".user").val() == "") {
+				alert("请输入账号");
+			} else if($(".password").val() == "") {
+				alert("请输入密码");
+			} else {
+//				window.location.href = "home.php";
+				$.post("php/login.php", { user: $(".user").val(), password: $(".password").val() }, function(data) {
+					if(data == 'success') {
+						window.location.href = "home.php";
+					} else {
+						alert("您输入的账号或密码有误！");
+					}
+				});
+			}
+			if(checkBox.checked) {
+				localStorage.setItem("user", $(".user").val());
+				localStorage.setItem("password", $(".password").val());
+				localStorage.setItem("checkEl", checkBox.checked);
+			} else {
+				localStorage.setItem("user", "");
+				localStorage.setItem("password", "");
+				localStorage.setItem("checkEl", "");
+			}
+		});
+		
+	</script>
+
+</html>

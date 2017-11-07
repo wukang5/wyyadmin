@@ -1,0 +1,21 @@
+.search {
+  width: 100%;
+  margin-top: 20px;
+  overflow: hidden;
+}
+.search p {
+  margin-top: 5px;
+  float: left;
+  margin-left: 20px;
+}
+.search .getData {
+  width: 100px;
+  height: 30px;
+  margin-left: 20px;
+}
+table {
+  margin-top: 20px;
+}
+table td {
+  text-align: center;
+}
