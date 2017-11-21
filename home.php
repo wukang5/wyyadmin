@@ -102,6 +102,6 @@
 	<!--angularJs引入的js代码-->
 	<script src="js/userCtl.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/operatorCtl.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/dealOrder.js" type="text/javascript" charset="utf-8"></script>
-
+	<script src="js/questionCtl.js" type="text/javascript" charset="utf-8"></script>
+	
 </html>

@@ -4,38 +4,56 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		
+
 	</head>
 
 	<body>
-		<div class="itemPage" ng-controller="dealOrder">
+		<div class="itemPage" ng-controller="questionCtl">
 			<div class="search">
 				<p>公司：<input type="text" id="searchCompany" /></p>
 				<p>加密狗号：<input type="text" id="searchKeynum" /></p>
 				<p>姓名：<input type="text" id="searchName" /></p>
 				<p>手机号：<input type="text" id="searchPhone" /></p>
-				<button class="getData btn btn-success">查 询</button>
+				<button class="searchbtn btn btn-success" ng-click="searchQuestion()">查 询</button>
 			</div>
 			<div class="table-responsive">
-				<table class="table table-bordered table-hover">
-					<th>
-						<td>公司名称</td>
-						<td>加密狗号</td>
-						<td>姓名</td>
-						<td>手机号</td>
-						<td>提交时间</td>
-						<td>状态</td>
-					</th>
-					<tr>
-						<td>1</td>
-						<td>...</td>
-						<td>...</td>
-						<td>...</td>
-						<td>...</td>
-						<td>...</td>
-						<td>...</td>
-					</tr>
-				</table>
+				<div class="questionArea">
+					<div class="questionWrap">
+
+					</div>
+				</div>
+				<div class="tableWin">
+					<table class="table table-bordered table-hover">
+						<th>
+							<td>序号</td>
+							<td>公司名称</td>
+							<td>加密狗号</td>
+							<td>姓名</td>
+							<td>手机号</td>
+							<td>提交时间</td>
+							<td>状态</td>
+							<td>催单</td>
+						</th>
+						<tr ng-repeat="question in questions">
+							<td>
+								<button class="btn" ng-click="deal()">
+		          					处理
+		       		 			</button>
+		       		 			<button class="btn btn-success" ng-disabled="true" ng-click="finish()">
+									完成
+								</button>
+							</td>
+							<td>{{question.id}}</td>
+							<td>{{question.company}}</td>
+							<td>{{question.keynum}}</td>
+							<td>{{question.name}}</td>
+							<td>{{question.phone}}</td>
+							<td>{{question.subtime}}</td>
+							<td>{{question.state}}</td>
+							<td>{{question.remindState}}</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</body>
