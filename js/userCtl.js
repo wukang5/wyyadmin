@@ -149,7 +149,7 @@ myapp.controller('userCtl', function($scope, $http) {
 		if($scope.edit && (!$scope.userName.length ||
 				!$scope.code.length ||
 				!$scope.passw1.length || !$scope.passw2.length)) {
-			$scope.incomplete = true;
+				$scope.incomplete = true;
 		}
 	};
 });

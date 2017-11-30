@@ -12,6 +12,7 @@
 		<!--angular子页面的css-->
 		<link rel="stylesheet" type="text/css" href="css/dealOrder.css" />
 		<link rel="stylesheet" type="text/css" href="css/userManage.css" />
+		<link rel="stylesheet" type="text/css" href="css/shopManage.css"/>
 	</head>
 
 	<body>
@@ -21,6 +22,9 @@
 					<div class="project">微预约管理</div>
 					<div ng-class="{active:nativeId=='#/'}" class="menu dealOrder">
 						<a native href="#/">预约</a>
+					</div>
+					<div ng-class="{active:nativeId=='#/shopManage'}" class="menu shopManage">
+						<a native href="#/shopManage">商店管理</a>
 					</div>
 					<div ng-class="{active:nativeId=='#/operatorManage'}" class="menu operatorManage">
 						<a native href="#/operatorManage">操作员</a>
@@ -41,6 +45,7 @@
 	<script src="js/jQuery v1.12.4.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/upimg.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		var myapp = angular.module("myapp", ["ngRoute"]);
 		myapp.run(['$rootScope', function($rootScope) {
@@ -71,6 +76,9 @@
 			.config(function($routeProvider) {
 				$routeProvider.when('/', {
 						templateUrl: 'temp/dealOrder.html'
+					})
+					.when('/shopManage', {
+						templateUrl: 'temp/shopManage.html'
 					})
 					.when('/operatorManage', {
 						templateUrl: 'temp/operatorManage.html'
@@ -103,5 +111,7 @@
 	<script src="js/userCtl.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/operatorCtl.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/questionCtl.js" type="text/javascript" charset="utf-8"></script>
-	
+	<script src="js/shopCtl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery v1.12.4.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/ajaxfileupload.js" type="text/javascript" charset="utf-8"></script>
 </html>
